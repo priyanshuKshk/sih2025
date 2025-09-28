@@ -8,6 +8,7 @@ import ExtensionDashboard from "./pages/dashboards/ExtensionDashboard"
 import DistrictDashboard from "./pages/dashboards/DistrictDashboard"
 import NationalDashboard from "./pages/dashboards/NationalDashboard"
 import Home from './Pages/Home'
+import DiscussionPage from './Pages/DiscussionPage'
 import FarmPage from './components/farm/FarmPage'
 import FarmList from './components/farm/FarmList'
 import FarmForm from './components/farm/FarmForm'
@@ -30,6 +31,7 @@ return (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
+      <Route path="/discussion" element={<DiscussionPage />} />
       <Route path="/vet-dashboard" element={<VetDashboard />} />
       <Route path="/extension-dashboard" element={<ExtensionDashboard />} />
       <Route path="/district-dashboard" element={<DistrictDashboard />} />

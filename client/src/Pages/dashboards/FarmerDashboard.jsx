@@ -18,6 +18,7 @@ export default function FarmerDashboard() {
         <h1 className="text-xl font-semibold text-green-700">
           Farmer Dashboard
         </h1>
+ 
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">{user?.name}</span>
           <button
@@ -31,6 +32,16 @@ export default function FarmerDashboard() {
 
       {/* Main Content */}
       <main className="flex-1 p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+               <section className="bg-white p-5 rounded-lg shadow hover:shadow-md transition">
+  <h2 className="text-lg font-semibold mb-2">Discussion Forum</h2>
+  <p className="text-gray-600 mb-3">Share ideas and updates with other farmers.</p>
+  <button
+    onClick={() => navigate("/discussion")}
+    className="px-3 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+  >
+    Go to Forum
+  </button>
+</section>
         {/* Farm Overview */}
         <section className="bg-white p-5 rounded-lg shadow hover:shadow-md transition">
           <h2 className="text-lg font-semibold mb-2">Farm Overview</h2>
