@@ -17,8 +17,8 @@ localStorage.setItem('fb_user', JSON.stringify(user))
 }, [user])
 
 
-const login = async (email, password) => {
-const res = await api.post('/auth/login', { email, password })
+const login = async (email, password, role) => {
+const res = await api.post('/auth/login', { email, password, role })
 // assume API returns { access_token, user }
 localStorage.setItem('fb_token', res.data.access_token)
 setUser(res.data.user)

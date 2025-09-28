@@ -3,6 +3,11 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Dashboard from './pages/Dashboard'
+import FarmerDashboard from "./pages/dashboards/FarmerDashboard"
+import VetDashboard from "./pages/dashboards/VetDashboard"
+import ExtensionDashboard from "./pages/dashboards/ExtensionDashboard"
+import DistrictDashboard from "./pages/dashboards/DistrictDashboard"
+import NationalDashboard from "./pages/dashboards/NationalDashboard"
 import Home from './Pages/Home'
 import FarmPage from './components/farm/FarmPage'
 import FarmList from './components/farm/FarmList'
@@ -26,6 +31,11 @@ return (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
+      <Route path="/vet-dashboard" element={<VetDashboard />} />
+      <Route path="/extension-dashboard" element={<ExtensionDashboard />} />
+      <Route path="/district-dashboard" element={<DistrictDashboard />} />
+      <Route path="/national-dashboard" element={<NationalDashboard />} />
       <Route path="/farm" element={<FarmPage />} />
       <Route path="/farmlist" element={<FarmList />} />
       <Route path="/farmform" element={<FarmForm />} />
