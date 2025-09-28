@@ -13,27 +13,7 @@ export default function DiscussionPage() {
   const [loading, setLoading] = useState(true)
   const [posting, setPosting] = useState(false)
 
-  // Determine dashboard route based on user role
-  const getDashboardRoute = () => {
-    switch (user?.role) {
-      case "farmer":
-        return "/farmer-dashboard"
-      case "vet":
-        return "/vet-dashboard"
-      case "ext_worker":
-        return "/extension-dashboard"
-      case "district_admin":
-        return "/district-dashboard"
-      case "national_admin":
-        return "/national-dashboard"
-      default:
-        return "/"
-    }
-  }
 
-  const handleBackToDashboard = () => {
-    navigate(getDashboardRoute())
-  }
 
   // Fetch all posts
   const fetchPosts = async () => {
@@ -102,20 +82,12 @@ export default function DiscussionPage() {
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       {/* Back to Dashboard Button */}
       <button
-        onClick={handleBackToDashboard}
-        className="mb-6 flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium group"
-      >
-        <svg
-          className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+        onClick={() => navigate("/farmer-dashboard")}
+        className="mb-6 ..."
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
         Back to Dashboard
-      </button>
+        </button>
+
 
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
