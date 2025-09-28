@@ -1,5 +1,5 @@
 # sih2025
-# Farm Biosecurity Portal — Frontend
+# Farm Biosecurity Portal — Frontend and backend
 
 
 This repo is a Vite + React + Tailwind starter for the Farm Biosecurity Portal.
