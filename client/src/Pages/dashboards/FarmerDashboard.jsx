@@ -69,20 +69,6 @@ export default function FarmerDashboard() {
             View Farms
           </button>
         </section>
-
-        {/* Add New Farm */}
-        <section className="bg-white p-5 rounded-lg shadow hover:shadow-md transition">
-          <h2 className="text-lg font-semibold mb-2">Add New Farm</h2>
-          <p className="text-gray-600 mb-3">
-            Register a new farm into the system.
-          </p>
-          <button
-            onClick={() => navigate("/farmform")}
-            className="px-3 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700"
-          >
-            Add Farm
-          </button>
-        </section>
       </main>
     </div>
   )
