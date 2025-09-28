@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Login() {
   const navigate = useNavigate()
@@ -30,8 +30,20 @@ export default function Login() {
     }
   }
 
+  const handleBackToHome = () => {
+    navigate("/")
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 relative">
+      {/* Back to Home Button */}
+      <button
+        onClick={handleBackToHome}
+        className="absolute top-4 left-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
+      >
+        ← Back to Home
+      </button>
+
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white p-6 rounded-lg shadow"
@@ -39,8 +51,11 @@ export default function Login() {
         <h2 className="text-2xl font-semibold mb-4">Select Role & Login</h2>
 
         {/* Role Selection */}
-        <label className="block mb-2 text-sm">Role</label>
+        <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-700">
+          Role
+        </label>
         <select
+          id="role"
           className="w-full p-2 border rounded mb-4"
           value={role}
           onChange={(e) => setRole(e.target.value)}
@@ -59,6 +74,16 @@ export default function Login() {
         >
           Login
         </button>
+
+        {/* Register Link */}
+        <div className="text-sm mt-4 text-center">
+          <p className="text-gray-600">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-600 hover:underline font-medium">
+              Register here
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   )
