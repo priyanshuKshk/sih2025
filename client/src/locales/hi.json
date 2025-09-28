@@ -56,8 +56,21 @@
   "state": "राज्य",
   "selectState": "राज्य चुनें",
   "selectDistrict": "जिला चुनें",
+  "alreadyAccount": "क्या आपके पास पहले से खाता है?",
 
-  "alreadyAccount": "क्या आपके पास पहले से खाता है?"
+    "back_to_dashboard": "डैशबोर्ड पर वापस जाएं",
+  "community_discussion": "समुदाय चर्चा",
+  "share_thoughts": "अपने विचार या प्रश्न साझा करें",
+  "discussion_placeholder": "आपके मन में क्या है? पशुपालन, फसल या अपना अनुभव साझा करें...",
+  "attach_image": "छवि संलग्न करें (वैकल्पिक)",
+  "image_preview": "छवि पूर्वावलोकन",
+  "posting": "पोस्ट कर रहा है...",
+  "share_post": "पोस्ट साझा करें",
+  "recent_discussions": "हाल की चर्चाएँ",
+  "posts": "{{count}} पोस्ट",
+  "posts_plural": "{{count}} पोस्टें",
+  "no_discussions": "अभी तक कोई चर्चा नहीं है",
+  "start_conversation": "संवाद शुरू करने वाले पहले व्यक्ति बनें!"
 
 
 

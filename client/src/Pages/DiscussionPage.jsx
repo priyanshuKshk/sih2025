@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
+import { useTranslation } from "react-i18next"
 
 export default function DiscussionPage() {
   const { user } = useAuth()
   const navigate = useNavigate()
+  const { t } = useTranslation() // ✅ i18n hook
   const [posts, setPosts] = useState([])
   const [text, setText] = useState("")
   const [image, setImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
   const [loading, setLoading] = useState(true)
   const [posting, setPosting] = useState(false)
-
-
 
   // Fetch all posts
   const fetchPosts = async () => {
@@ -66,7 +66,7 @@ export default function DiscussionPage() {
       fetchPosts()
     } catch (err) {
       console.error("Failed to post:", err)
-      alert("Failed to create post. Please try again.")
+      alert(t("post_failed")) // translated alert
     } finally {
       setPosting(false)
     }
@@ -83,32 +83,52 @@ export default function DiscussionPage() {
       {/* Back to Dashboard Button */}
       <button
         onClick={() => navigate("/farmer-dashboard")}
-        className="mb-6 ..."
-        >
-        ← Back to Dashboard
-        </button>
+        className="mb-6 px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+      >
+        ← {t("back_to_dashboard")}
+      </button>
 
       <div className="max-w-3xl mx-auto">
+        {/* Page Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="bg-green-100 p-2 rounded-full">
-            <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            <svg
+              className="w-6 h-6 text-green-700"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+              />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Community Discussion</h1>
+          <h1 className="text-2xl font-bold text-gray-800">
+            {t("community_discussion")}
+          </h1>
         </div>
 
         {/* Post Form */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mb-8">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mb-8"
+        >
           <div className="space-y-4">
             <div>
-              <label htmlFor="discussion-text" className="block text-sm font-medium text-gray-700 mb-1">
-                Share your thoughts or questions
+              <label
+                htmlFor="discussion-text"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                {t("share_thoughts")}
               </label>
               <textarea
                 id="discussion-text"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
-                placeholder="What's on your mind? Ask about livestock, crops, or share your experience..."
+                placeholder={t("discussion_placeholder")}
                 rows="3"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -118,7 +138,7 @@ export default function DiscussionPage() {
             {/* Image Preview or Upload */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                {imagePreview ? "Image Preview" : "Attach an image (optional)"}
+                {imagePreview ? t("image_preview") : t("attach_image")}
               </label>
               {imagePreview ? (
                 <div className="relative inline-block">
@@ -132,8 +152,19 @@ export default function DiscussionPage() {
                     onClick={handleClearImage}
                     className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 shadow"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -159,7 +190,7 @@ export default function DiscussionPage() {
                     : "bg-green-600 hover:bg-green-700"
                 }`}
               >
-                {posting ? "Posting..." : "Share Post"}
+                {posting ? t("posting") : t("share_post")}
               </button>
             </div>
           </div>
@@ -168,9 +199,13 @@ export default function DiscussionPage() {
         {/* Discussion Feed */}
         <div className="space-y-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-800">Recent Discussions</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              {t("recent_discussions")}
+            </h2>
             {!loading && posts.length > 0 && (
-              <span className="text-sm text-gray-500">{posts.length} post{posts.length !== 1 ? 's' : ''}</span>
+              <span className="text-sm text-gray-500">
+                {t("posts", { count: posts.length })}
+              </span>
             )}
           </div>
 
@@ -178,7 +213,10 @@ export default function DiscussionPage() {
             // Skeleton loader
             <div className="space-y-5">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 animate-pulse">
+                <div
+                  key={i}
+                  className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 animate-pulse"
+                >
                   <div className="flex items-center mb-3">
                     <div className="bg-gray-200 rounded-full w-8 h-8"></div>
                     <div className="ml-3">
@@ -195,14 +233,16 @@ export default function DiscussionPage() {
             // Empty state
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
               <div className="text-5xl mb-4">💬</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">No discussions yet</h3>
-              <p className="text-gray-600">Be the first to start a conversation!</p>
+              <h3 className="text-lg font-medium text-gray-800 mb-2">
+                {t("no_discussions")}
+              </h3>
+              <p className="text-gray-600">{t("start_conversation")}</p>
             </div>
           ) : (
             // Posts list
             posts
               .slice()
-              .reverse() // Show newest first
+              .reverse()
               .map((post) => (
                 <div
                   key={post._id}
@@ -211,7 +251,9 @@ export default function DiscussionPage() {
                   <div className="flex items-start gap-3 mb-3">
                     <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10" />
                     <div>
-                      <div className="font-medium text-gray-800">{post.user?.name || "Anonymous"}</div>
+                      <div className="font-medium text-gray-800">
+                        {post.user?.name || t("anonymous")}
+                      </div>
                       <div className="text-xs text-gray-500">
                         {new Date(post.createdAt).toLocaleString("en-US", {
                           month: "short",
@@ -233,7 +275,6 @@ export default function DiscussionPage() {
                       />
                     </div>
                   )}
-                  {/* Optional: Add like/comment actions later */}
                 </div>
               ))
           )}

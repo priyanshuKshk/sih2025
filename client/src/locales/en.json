@@ -58,7 +58,21 @@
   "selectState": "Select State",
   "selectDistrict": "Select District",
 
-  "alreadyAccount": "Already have an account?"
+  "alreadyAccount": "Already have an account?",
+
+  "back_to_dashboard": "Back to Dashboard",
+  "community_discussion": "Community Discussion",
+  "share_thoughts": "Share your thoughts or questions",
+  "discussion_placeholder": "What's on your mind? Ask about livestock, crops, or share your experience...",
+  "attach_image": "Attach an image (optional)",
+  "image_preview": "Image Preview",
+  "posting": "Posting...",
+  "share_post": "Share Post",
+  "recent_discussions": "Recent Discussions",
+  "posts": "{{count}} post",
+  "posts_plural": "{{count}} posts",
+  "no_discussions": "No discussions yet",
+  "start_conversation": "Be the first to start a conversation!"
 
 
 }
