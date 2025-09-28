@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import Dashboard from './pages/Dashboard'
 import FarmerDashboard from "./pages/dashboards/FarmerDashboard"
 import VetDashboard from "./pages/dashboards/VetDashboard"
 import ExtensionDashboard from "./pages/dashboards/ExtensionDashboard"
@@ -30,7 +29,6 @@ return (
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
       <Route path="/vet-dashboard" element={<VetDashboard />} />
       <Route path="/extension-dashboard" element={<ExtensionDashboard />} />
