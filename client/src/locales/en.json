@@ -1,0 +1,66 @@
+{
+  "title": "Digital Farm Management for Pig & Poultry Biosecurity",
+  "subtitle": "Empowering farmers with tools to protect livestock, improve compliance, and prevent disease outbreaks through a user-friendly digital portal.",
+  "login": "Login",
+  "register": "Register",
+  "why_choose": "Why Choose Our Platform?",
+  "risk_assessment": "Risk Assessment",
+  "risk_assessment_desc": "Customizable tools to assess farm-level biosecurity risks based on local conditions.",
+  "training": "Training Modules",
+  "training_desc": "Interactive learning resources and best practices for pig and poultry farmers.",
+  "compliance": "Compliance Tracking",
+  "compliance_desc": "Easy digital record-keeping to meet regulatory requirements and disease-free recognition.",
+  "alerts": "Real-time Alerts",
+  "alerts_desc": "Stay updated with instant notifications on disease outbreaks and biosecurity breaches.",
+  "multilingual": "Multilingual & Mobile-first",
+  "multilingual_desc": "Designed for accessibility in rural areas with local language support and mobile optimization.",
+  "cta_title": "Get Started Today",
+  "cta_subtitle": "Join the movement toward healthier farms and stronger biosecurity practices.",
+  "cta_button": "Register Now",
+  "footer": "Farm Biosecurity Portal. All rights reserved.",
+  
+  "backToHome": "Back to Home",
+  "selectRoleLogin": "Select Role & Login",
+  "role": "Role",
+  "farmer": "Farmer",
+  "veterinarian": "Veterinarian",
+  "extensionWorker": "Extension Worker",
+  "districtAdmin": "District Admin",
+  "nationalAdmin": "National Admin",
+
+  "noAccount": "Don't have an account?",
+  "registerHere": "Register here",
+
+  "createAccount": "Create Account",
+  "fullName": "Full Name",
+  "enterFullName": "Enter your full name",
+  "email": "Email Address",
+  "enterEmail": "Enter your email",
+  "mobile": "Mobile Number",
+  "enterMobile": "Enter your mobile number",
+  "password": "Password",
+  "createPassword": "Create a password",
+
+  "vet": "Veterinarian",
+  "extWorker": "Extension Worker",
+
+  "farmName": "Farm Name",
+  "enterFarmName": "Enter your farm name",
+  "districtAssigned": "District Assigned",
+  "enterDistrictAssigned": "Enter assigned district",
+  "regionAssigned": "Region Assigned",
+  "enterRegionAssigned": "Enter assigned region",
+  "districtName": "District Name",
+  "enterDistrictName": "Enter district name",
+  "assignment": "Assignment",
+  "assignmentNote": "National Admins are assigned by system configuration.",
+  "state": "State",
+  "selectState": "Select State",
+  "selectDistrict": "Select District",
+
+  "alreadyAccount": "Already have an account?"
+
+
+}
+
+

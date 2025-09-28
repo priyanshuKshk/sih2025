@@ -1,10 +1,12 @@
-import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import api from "../../services/api"
-import indiaRegions from "../../constants/indiaRegions"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // ✅ import i18n hook
+import api from "../../services/api";
+import indiaRegions from "../../constants/indiaRegions";
 
 export default function Register() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { t } = useTranslation(); // ✅ hook for translations
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -14,109 +16,107 @@ export default function Register() {
     farmName: "",
     district: "",
     region: "",
-    state: "", // Added state to form
-  })
-  const [error, setError] = useState(null)
+    state: ""
+  });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value })
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await api.post("/auth/register", form)
-      navigate("/login")
+      await api.post("/auth/register", form);
+      navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.detail || "Registration failed")
+      setError(err.response?.data?.detail || "Registration failed");
     }
-  }
+  };
 
   const handleBackToHome = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
-  // Conditional fields based on role
+  // ✅ Conditional fields with translations
   const renderRoleFields = () => {
     switch (form.role) {
       case "farmer":
         return (
           <div className="mb-3">
             <label htmlFor="farmName" className="block text-sm font-medium text-gray-700 mb-1">
-              Farm Name
+              {t("farmName")}
             </label>
             <input
               id="farmName"
               name="farmName"
-              placeholder="Enter your farm name"
+              placeholder={t("enterFarmName")}
               className="w-full p-2 border rounded"
               value={form.farmName}
               onChange={handleChange}
             />
           </div>
-        )
+        );
       case "vet":
         return (
           <div className="mb-3">
             <label htmlFor="district" className="block text-sm font-medium text-gray-700 mb-1">
-              District Assigned
+              {t("districtAssigned")}
             </label>
             <input
               id="district"
               name="district"
-              placeholder="Enter assigned district"
+              placeholder={t("enterDistrictAssigned")}
               className="w-full p-2 border rounded"
               value={form.district}
               onChange={handleChange}
             />
           </div>
-        )
+        );
       case "ext_worker":
         return (
           <div className="mb-3">
             <label htmlFor="region" className="block text-sm font-medium text-gray-700 mb-1">
-              Region Assigned
+              {t("regionAssigned")}
             </label>
             <input
               id="region"
               name="region"
-              placeholder="Enter assigned region"
+              placeholder={t("enterRegionAssigned")}
               className="w-full p-2 border rounded"
               value={form.region}
               onChange={handleChange}
             />
           </div>
-        )
+        );
       case "district_admin":
         return (
           <div className="mb-3">
             <label htmlFor="district" className="block text-sm font-medium text-gray-700 mb-1">
-              District Name
+              {t("districtName")}
             </label>
             <input
               id="district"
               name="district"
-              placeholder="Enter district name"
+              placeholder={t("enterDistrictName")}
               className="w-full p-2 border rounded"
               value={form.district}
               onChange={handleChange}
             />
           </div>
-        )
+        );
       case "national_admin":
         return (
           <div className="mb-3">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Assignment
+              {t("assignment")}
             </label>
-            <p className="text-sm text-gray-500">
-              National Admins are assigned by system configuration.
-            </p>
+            <p className="text-sm text-gray-500">{t("assignmentNote")}</p>
           </div>
-        )
+        );
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative">
@@ -125,14 +125,14 @@ export default function Register() {
         onClick={handleBackToHome}
         className="absolute top-4 left-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
       >
-        ← Back to Home
+        ← {t("backToHome")}
       </button>
 
       <form
         onSubmit={submit}
         className="w-full max-w-md bg-white p-6 rounded-lg shadow"
       >
-        <h2 className="text-2xl font-semibold mb-4">Create Account</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t("createAccount")}</h2>
         {error && (
           <div className="bg-red-100 text-red-700 p-2 rounded mb-4">{error}</div>
         )}
@@ -140,12 +140,12 @@ export default function Register() {
         {/* Name */}
         <div className="mb-3">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Full Name
+            {t("fullName")}
           </label>
           <input
             id="name"
             name="name"
-            placeholder="Enter your full name"
+            placeholder={t("enterFullName")}
             className="w-full p-2 border rounded"
             value={form.name}
             onChange={handleChange}
@@ -155,13 +155,13 @@ export default function Register() {
         {/* Email */}
         <div className="mb-3">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email Address
+            {t("email")}
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            placeholder="Enter your email"
+            placeholder={t("enterEmail")}
             className="w-full p-2 border rounded"
             value={form.email}
             onChange={handleChange}
@@ -171,13 +171,13 @@ export default function Register() {
         {/* Mobile */}
         <div className="mb-3">
           <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
-            Mobile Number
+            {t("mobile")}
           </label>
           <input
             id="mobile"
             name="mobile"
             type="tel"
-            placeholder="Enter your mobile number"
+            placeholder={t("enterMobile")}
             className="w-full p-2 border rounded"
             value={form.mobile}
             onChange={handleChange}
@@ -187,13 +187,13 @@ export default function Register() {
         {/* Password */}
         <div className="mb-3">
           <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Password
+            {t("password")}
           </label>
           <input
             id="password"
             name="password"
             type="password"
-            placeholder="Create a password"
+            placeholder={t("createPassword")}
             className="w-full p-2 border rounded"
             value={form.password}
             onChange={handleChange}
@@ -203,7 +203,7 @@ export default function Register() {
         {/* Role */}
         <div className="mb-4">
           <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
-            Role
+            {t("role")}
           </label>
           <select
             id="role"
@@ -212,18 +212,18 @@ export default function Register() {
             onChange={handleChange}
             className="w-full p-2 border rounded"
           >
-            <option value="farmer">Farmer</option>
-            <option value="vet">Veterinarian</option>
-            <option value="ext_worker">Extension Worker</option>
-            <option value="district_admin">District Admin</option>
-            <option value="national_admin">National Admin</option>
+            <option value="farmer">{t("farmer")}</option>
+            <option value="vet">{t("vet")}</option>
+            <option value="ext_worker">{t("extWorker")}</option>
+            <option value="district_admin">{t("districtAdmin")}</option>
+            <option value="national_admin">{t("nationalAdmin")}</option>
           </select>
         </div>
 
         {/* State Select */}
         <div className="mb-3">
           <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
-            State
+            {t("state")}
           </label>
           <select
             id="state"
@@ -232,7 +232,7 @@ export default function Register() {
             onChange={handleChange}
             className="w-full p-2 border rounded"
           >
-            <option value="">Select State</option>
+            <option value="">{t("selectState")}</option>
             {Object.keys(indiaRegions).map((st) => (
               <option key={st} value={st}>{st}</option>
             ))}
@@ -243,7 +243,7 @@ export default function Register() {
         {form.state && (
           <div className="mb-3">
             <label htmlFor="district" className="block text-sm font-medium text-gray-700 mb-1">
-              District
+              {t("district")}
             </label>
             <select
               id="district"
@@ -252,7 +252,7 @@ export default function Register() {
               onChange={handleChange}
               className="w-full p-2 border rounded"
             >
-              <option value="">Select District</option>
+              <option value="">{t("selectDistrict")}</option>
               {indiaRegions[form.state].map((d) => (
                 <option key={d} value={d}>{d}</option>
               ))}
@@ -268,15 +268,15 @@ export default function Register() {
           type="submit"
           className="w-full p-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
         >
-          Register
+          {t("register")}
         </button>
 
         <div className="text-sm mt-4 text-center">
           <Link to="/login" className="text-blue-600 hover:underline">
-            Already have an account?
+            {t("alreadyAccount")}
           </Link>
         </div>
       </form>
     </div>
-  )
+  );
 }

@@ -1,38 +1,40 @@
-import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
-  const navigate = useNavigate()
-  const [role, setRole] = useState("Farmer")
+  const navigate = useNavigate();
+  const [role, setRole] = useState("Farmer");
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Redirect user based on role only
     switch (role) {
       case "Farmer":
-        navigate("/farmer-dashboard")
-        break
+        navigate("/farmer-dashboard");
+        break;
       case "Veterinarian":
-        navigate("/vet-dashboard")
-        break
+        navigate("/vet-dashboard");
+        break;
       case "Extension Worker":
-        navigate("/extension-dashboard")
-        break
+        navigate("/extension-dashboard");
+        break;
       case "District Admin":
-        navigate("/district-dashboard")
-        break
+        navigate("/district-dashboard");
+        break;
       case "National Admin":
-        navigate("/national-dashboard")
-        break
+        navigate("/national-dashboard");
+        break;
       default:
-        navigate("/")
+        navigate("/");
     }
-  }
+  };
 
   const handleBackToHome = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative">
@@ -41,18 +43,21 @@ export default function Login() {
         onClick={handleBackToHome}
         className="absolute top-4 left-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
       >
-        ← Back to Home
+        ← {t("backToHome")}
       </button>
 
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white p-6 rounded-lg shadow"
       >
-        <h2 className="text-2xl font-semibold mb-4">Select Role & Login</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t("selectRoleLogin")}</h2>
 
         {/* Role Selection */}
-        <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-700">
-          Role
+        <label
+          htmlFor="role"
+          className="block mb-2 text-sm font-medium text-gray-700"
+        >
+          {t("role")}
         </label>
         <select
           id="role"
@@ -60,11 +65,11 @@ export default function Login() {
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
-          <option value="Farmer">Farmer</option>
-          <option value="Veterinarian">Veterinarian</option>
-          <option value="Extension Worker">Extension Worker</option>
-          <option value="District Admin">District Admin</option>
-          <option value="National Admin">National Admin</option>
+          <option value="Farmer">{t("farmer")}</option>
+          <option value="Veterinarian">{t("veterinarian")}</option>
+          <option value="Extension Worker">{t("extensionWorker")}</option>
+          <option value="District Admin">{t("districtAdmin")}</option>
+          <option value="National Admin">{t("nationalAdmin")}</option>
         </select>
 
         {/* Submit */}
@@ -72,19 +77,22 @@ export default function Login() {
           type="submit"
           className="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
-          Login
+          {t("login")}
         </button>
 
         {/* Register Link */}
         <div className="text-sm mt-4 text-center">
           <p className="text-gray-600">
-            Don't have an account?{" "}
-            <Link to="/register" className="text-blue-600 hover:underline font-medium">
-              Register here
+            {t("noAccount")}{" "}
+            <Link
+              to="/register"
+              className="text-blue-600 hover:underline font-medium"
+            >
+              {t("registerHere")}
             </Link>
           </p>
         </div>
       </form>
     </div>
-  )
+  );
 }

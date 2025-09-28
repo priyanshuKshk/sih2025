@@ -88,7 +88,6 @@ export default function DiscussionPage() {
         ← Back to Dashboard
         </button>
 
-
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
           <div className="bg-green-100 p-2 rounded-full">
