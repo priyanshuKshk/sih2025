@@ -1,8 +1,15 @@
 import React from "react"
 import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 export default function NationalDashboard() {
   const { user, logout } = useAuth()
+const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await logout()
+    navigate("/login") // redirect to login after logout
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -10,7 +17,10 @@ export default function NationalDashboard() {
         <h1 className="text-xl font-semibold">National Admin Dashboard</h1>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">{user?.name}</span>
-          <button onClick={logout} className="py-1 px-3 border rounded">
+          <button
+            onClick={handleLogout}
+            className="py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600"
+          >
             Logout
           </button>
         </div>
