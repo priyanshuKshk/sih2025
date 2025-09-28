@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function FarmPage() {
+  const navigate = useNavigate();
   const [farm, setFarm] = useState(null);
   const [logs, setLogs] = useState([]);
   const [assessments, setAssessments] = useState([]);
@@ -8,7 +10,6 @@ export default function FarmPage() {
   const [trainings, setTrainings] = useState([]);
 
   useEffect(() => {
-    // Dummy farm data
     setFarm({
       name: "Sunnydale Farm",
       type: "Dairy & Crop",
@@ -19,27 +20,23 @@ export default function FarmPage() {
       crops: ["Maize", "Wheat"],
     });
 
-    // Dummy compliance logs
     setLogs([
       { id: 1, description: "Monthly health log", status: "Pending" },
       { id: 2, description: "Water quality report", status: "Approved" },
       { id: 3, description: "Feed inspection", status: "Rejected" },
     ]);
 
-    // Dummy risk assessments
     setAssessments([
       { id: 1, title: "Foot & Mouth Risk", risk: "High" },
       { id: 2, title: "Water contamination", risk: "Medium" },
       { id: 3, title: "Crop disease check", risk: "Low" },
     ]);
 
-    // Dummy trainings
     setTrainings([
       { title: "Animal Vaccination Basics", progress: 80 },
       { title: "Crop Disease Management", progress: 40 },
     ]);
 
-    // Dummy alerts
     setAlerts([
       { id: 1, title: "Foot & Mouth outbreak nearby", message: "Vaccinate livestock immediately." },
       { id: 2, title: "Water contamination alert", message: "Check water source before use." },
@@ -54,6 +51,15 @@ export default function FarmPage() {
 
   return (
     <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
+      {/* Back Button */}
+      <button
+        type="button"
+        onClick={() => navigate("/farmer-dashboard")}
+        className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 mb-4"
+      >
+        ← Back to Dashboard
+      </button>
+
       {/* Farm Basic Info */}
       <Card>
         <h2 className="text-2xl font-semibold mb-3">{farm.name}</h2>

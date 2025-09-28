@@ -85,7 +85,7 @@ export default function DiscussionPage() {
         onClick={() => navigate("/farmer-dashboard")}
         className="mb-6 ..."
         >
-        Back to Dashboard
+        ← Back to Dashboard
         </button>
 
 

@@ -19,13 +19,16 @@ export default function NationalDashboard() {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/login"); // redirect to login after logout
+    navigate("/login");
   };
 
   // Dummy Data
   const [overview, setOverview] = useState([]);
   const [compliance, setCompliance] = useState([]);
   const [outbreaks, setOutbreaks] = useState([]);
+  const [alerts, setAlerts] = useState([]);
+  const [trainingModules, setTrainingModules] = useState([]);
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   useEffect(() => {
     setOverview([
@@ -33,28 +36,43 @@ export default function NationalDashboard() {
       { state: "State B", farms: 80, users: 200, livestock: 300 },
       { state: "State C", farms: 150, users: 420, livestock: 600 },
     ]);
+
     setCompliance([
       { district: "District 1", compliance: 90 },
       { district: "District 2", compliance: 75 },
       { district: "District 3", compliance: 85 },
     ]);
+
     setOutbreaks([
       { region: "State A - District 1", disease: "Avian Flu", severity: "High" },
       { region: "State B - District 3", disease: "Foot & Mouth", severity: "Medium" },
     ]);
+
+    setAlerts([
+      { message: "High-risk outbreak in State A", severity: "High" },
+      { message: "Compliance logs missing for multiple districts", severity: "Medium" },
+    ]);
+
+    setTrainingModules([
+      { title: "National Biosecurity Training", state: "State A", assigned: 50 },
+      { title: "Avian Flu Management", state: "State B", assigned: 40 },
+    ]);
   }, []);
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-  // Simple Card component
   const Card = ({ children }) => (
     <div className="bg-white p-4 rounded shadow">{children}</div>
   );
 
+  const handleAcknowledge = (idx) => {
+    const updated = [...alerts];
+    updated[idx].acknowledged = true;
+    setAlerts(updated);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow p-4 flex items-center justify-between">
+      <header className="bg-white shadow p-4 flex items-center justify-between sticky top-0 z-10">
         <h1 className="text-xl font-semibold">National Admin Dashboard</h1>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">{user?.name}</span>
@@ -67,7 +85,6 @@ export default function NationalDashboard() {
         </div>
       </header>
 
-      {/* Main Dashboard */}
       <main className="p-6 space-y-6">
         {/* National Overview */}
         <Card>
@@ -84,7 +101,7 @@ export default function NationalDashboard() {
           </div>
         </Card>
 
-        {/* Aggregated Reports */}
+        {/* Aggregated Compliance */}
         <Card>
           <h2 className="text-lg font-semibold mb-4">Aggregated Compliance</h2>
           <ResponsiveContainer width="100%" height={250}>
@@ -95,6 +112,16 @@ export default function NationalDashboard() {
               <Bar dataKey="compliance" fill="#0088FE" />
             </BarChart>
           </ResponsiveContainer>
+        </Card>
+
+        {/* National Risk Map */}
+        <Card>
+          <h2 className="text-lg font-semibold mb-4">National Risk Map</h2>
+          <div className="h-60 bg-gray-100 flex items-center justify-center rounded">
+            <p className="text-gray-500">
+              Interactive map with high-risk farms/districts (placeholder)
+            </p>
+          </div>
         </Card>
 
         {/* Outbreak Feed */}
@@ -126,6 +153,48 @@ export default function NationalDashboard() {
           </ul>
         </Card>
 
+        {/* Alerts & Notifications */}
+        <Card>
+          <h2 className="text-lg font-semibold mb-4">Alerts & Notifications</h2>
+          <ul className="space-y-2">
+            {alerts.map((a, idx) => (
+              <li
+                key={idx}
+                className={`p-3 border rounded-lg flex justify-between items-center ${
+                  a.severity === "High" ? "bg-red-50 text-red-800" : "bg-yellow-50 text-yellow-800"
+                }`}
+              >
+                <span>{a.message}</span>
+                {!a.acknowledged && (
+                  <button
+                    onClick={() => handleAcknowledge(idx)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    Acknowledge
+                  </button>
+                )}
+                {a.acknowledged && <span className="text-sm text-green-600">Acknowledged</span>}
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        {/* Training Module Management */}
+        <Card>
+          <h2 className="text-lg font-semibold mb-4">Training Modules</h2>
+          <ul className="space-y-2">
+            {trainingModules.map((t, idx) => (
+              <li key={idx} className="p-3 border rounded-lg flex justify-between items-center bg-gray-50">
+                <span>{t.title} - {t.state}</span>
+                <span className="text-sm text-gray-600">Assigned: {t.assigned}</span>
+              </li>
+            ))}
+          </ul>
+          <button className="mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+            Add New Module
+          </button>
+        </Card>
+
         {/* System Configuration */}
         <Card>
           <h2 className="text-lg font-semibold mb-4">System Configuration</h2>
@@ -133,11 +202,8 @@ export default function NationalDashboard() {
             <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
               Manage Roles & Permissions
             </button>
-            <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-              Configure Workflows
-            </button>
             <button className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
-              Manage Training Modules
+              Configure Workflows
             </button>
           </div>
         </Card>
@@ -163,17 +229,17 @@ export default function NationalDashboard() {
           </ResponsiveContainer>
         </Card>
 
-        {/* Alerts & Notifications */}
+        {/* Export Reports */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Alerts & Notifications</h2>
-          <ul className="space-y-2">
-            <li className="p-3 border rounded-lg bg-yellow-50 text-yellow-800">
-              High-risk outbreak in State A
-            </li>
-            <li className="p-3 border rounded-lg bg-red-50 text-red-800">
-              Compliance logs missing for multiple districts
-            </li>
-          </ul>
+          <h2 className="text-lg font-semibold mb-4">Export Reports</h2>
+          <div className="flex gap-3 flex-wrap">
+            <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900">
+              Export CSV
+            </button>
+            <button className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800">
+              Export PDF
+            </button>
+          </div>
         </Card>
       </main>
     </div>

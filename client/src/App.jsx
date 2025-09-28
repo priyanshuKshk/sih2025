@@ -11,7 +11,6 @@ import Home from './Pages/Home'
 import DiscussionPage from './Pages/DiscussionPage'
 import FarmPage from './components/farm/FarmPage'
 import FarmList from './components/farm/FarmList'
-import FarmForm from './components/farm/FarmForm'
 import { AuthProvider, useAuth } from './context/AuthContext'
 
 
@@ -38,8 +37,6 @@ return (
       <Route path="/national-dashboard" element={<NationalDashboard />} />
       <Route path="/farm" element={<FarmPage />} />
       <Route path="/farmlist" element={<FarmList />} />
-      <Route path="/farmform" element={<FarmForm />} />
-
     </Routes>
   </AuthProvider>
 )
