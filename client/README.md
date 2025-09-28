@@ -1,4 +1,3 @@
-# sih2025
 # Farm Biosecurity Portal — Frontend
 
 
@@ -15,4 +14,3 @@ This repo is a Vite + React + Tailwind starter for the Farm Biosecurity Portal.
 ## Notes
 - The frontend expects a backend API matching `/api/auth/login`, `/api/auth/register`, `/api/farms` etc.
 - Replace the minimal mock endpoints with your FastAPI backend when ready.
-```
