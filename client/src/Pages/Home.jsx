@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import Chatbot from "./Chatbot"
 
 export default function Home() {
   const { t, i18n } = useTranslation()
@@ -12,22 +13,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Language Switch */}
-      {/* <div className="flex justify-end p-4 gap-2">
-        <button
-          onClick={() => changeLanguage("en")}
-          className="px-3 py-1 bg-green-600 text-white rounded"
-        >
-          English
-        </button>
-        <button
-          onClick={() => changeLanguage("hi")}
-          className="px-3 py-1 bg-yellow-500 text-white rounded"
-        >
-          हिन्दी
-        </button>
-      </div> */}
-
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col items-center text-center">
@@ -86,6 +71,8 @@ export default function Home() {
       <footer className="bg-gray-900 text-gray-300 text-center py-6">
         <p>&copy; {new Date().getFullYear()} {t("footer")}</p>
       </footer>
+
+      <Chatbot />
     </div>
   )
 }

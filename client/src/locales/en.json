@@ -1,4 +1,13 @@
 {
+
+  
+  "chatbot_title": "Farm Assistant",
+  "chatbot_greeting": "Hello! 👋 Welcome to the Digital Farm Management Portal.",
+  "chatbot_intro": "I help you implement biosecurity measures for pig and poultry farms, manage data, and track farm activities.",
+  "chatbot_notes": "You can switch between English and Hindi using the language selector. I provide guidance on maintaining hygiene, monitoring animals, and improving farm safety.",
+  "chatbot_input_placeholder": "Type your message...",
+
+
   "title": "Digital Farm Management for Pig & Poultry Biosecurity",
   "subtitle": "Empowering farmers with tools to protect livestock, improve compliance, and prevent disease outbreaks through a user-friendly digital portal.",
   "login": "Login",
