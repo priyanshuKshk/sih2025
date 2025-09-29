@@ -12,14 +12,21 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { useTranslation } from "react-i18next";
+import "../../i18n"; // Import i18n config
 
 export default function NationalDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
   };
 
   // Dummy Data
@@ -73,14 +80,14 @@ export default function NationalDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow p-4 flex items-center justify-between sticky top-0 z-10">
-        <h1 className="text-xl font-semibold">National Admin Dashboard</h1>
+        <h1 className="text-xl font-semibold">{t("dashboard.title")}</h1>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">{user?.name}</span>
           <button
             onClick={handleLogout}
             className="py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600"
           >
-            Logout
+            {t("dashboard.logout")}
           </button>
         </div>
       </header>
@@ -88,22 +95,22 @@ export default function NationalDashboard() {
       <main className="p-6 space-y-6">
         {/* National Overview */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">National Overview</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.overview")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {overview.map((item, idx) => (
               <div key={idx} className="p-4 border rounded-lg shadow-sm bg-white">
                 <h3 className="font-semibold">{item.state}</h3>
-                <p>Farms: {item.farms}</p>
-                <p>Users: {item.users}</p>
-                <p>Livestock: {item.livestock}</p>
+                <p>{t("dashboard.farms")}: {item.farms}</p>
+                <p>{t("dashboard.users")}: {item.users}</p>
+                <p>{t("dashboard.livestock")}: {item.livestock}</p>
               </div>
             ))}
           </div>
         </Card>
 
-        {/* Aggregated Compliance */}
+        {/* Compliance */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Aggregated Compliance</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.compliance")}</h2>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={compliance}>
               <XAxis dataKey="district" />
@@ -114,19 +121,17 @@ export default function NationalDashboard() {
           </ResponsiveContainer>
         </Card>
 
-        {/* National Risk Map */}
+        {/* Risk Map */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">National Risk Map</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.riskMap")}</h2>
           <div className="h-60 bg-gray-100 flex items-center justify-center rounded">
-            <p className="text-gray-500">
-              Interactive map with high-risk farms/districts (placeholder)
-            </p>
+            <p className="text-gray-500">{t("dashboard.riskMapPlaceholder")}</p>
           </div>
         </Card>
 
         {/* Outbreak Feed */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Outbreak Feed</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.outbreakFeed")}</h2>
           <ul className="space-y-2">
             {outbreaks.map((o, idx) => (
               <li
@@ -153,9 +158,9 @@ export default function NationalDashboard() {
           </ul>
         </Card>
 
-        {/* Alerts & Notifications */}
+        {/* Alerts */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Alerts & Notifications</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.alerts")}</h2>
           <ul className="space-y-2">
             {alerts.map((a, idx) => (
               <li
@@ -170,56 +175,50 @@ export default function NationalDashboard() {
                     onClick={() => handleAcknowledge(idx)}
                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
                   >
-                    Acknowledge
+                    {t("dashboard.acknowledge")}
                   </button>
                 )}
-                {a.acknowledged && <span className="text-sm text-green-600">Acknowledged</span>}
+                {a.acknowledged && <span className="text-sm text-green-600">{t("dashboard.acknowledged")}</span>}
               </li>
             ))}
           </ul>
         </Card>
 
-        {/* Training Module Management */}
+        {/* Training Modules */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Training Modules</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.trainingModules")}</h2>
           <ul className="space-y-2">
-            {trainingModules.map((t, idx) => (
+            {trainingModules.map((tModule, idx) => (
               <li key={idx} className="p-3 border rounded-lg flex justify-between items-center bg-gray-50">
-                <span>{t.title} - {t.state}</span>
-                <span className="text-sm text-gray-600">Assigned: {t.assigned}</span>
+                <span>{tModule.title} - {tModule.state}</span>
+                <span className="text-sm text-gray-600">{t("dashboard.assigned")}: {tModule.assigned}</span>
               </li>
             ))}
           </ul>
           <button className="mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-            Add New Module
+            {t("dashboard.addModule")}
           </button>
         </Card>
 
-        {/* System Configuration */}
+        {/* System Config */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">System Configuration</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.systemConfig")}</h2>
           <div className="space-y-2">
             <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-              Manage Roles & Permissions
+              {t("dashboard.manageRoles")}
             </button>
             <button className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
-              Configure Workflows
+              {t("dashboard.configureWorkflows")}
             </button>
           </div>
         </Card>
 
         {/* Data Insights */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Data Insights</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.dataInsights")}</h2>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
-              <Pie
-                data={overview}
-                dataKey="farms"
-                nameKey="state"
-                outerRadius={80}
-                label
-              >
+              <Pie data={overview} dataKey="farms" nameKey="state" outerRadius={80} label>
                 {overview.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
@@ -229,15 +228,15 @@ export default function NationalDashboard() {
           </ResponsiveContainer>
         </Card>
 
-        {/* Export Reports */}
+        {/* Export */}
         <Card>
-          <h2 className="text-lg font-semibold mb-4">Export Reports</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("dashboard.exportReports")}</h2>
           <div className="flex gap-3 flex-wrap">
             <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900">
-              Export CSV
+              {t("dashboard.exportCSV")}
             </button>
             <button className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800">
-              Export PDF
+              {t("dashboard.exportPDF")}
             </button>
           </div>
         </Card>

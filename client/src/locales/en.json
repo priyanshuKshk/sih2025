@@ -72,7 +72,34 @@
   "posts": "{{count}} post",
   "posts_plural": "{{count}} posts",
   "no_discussions": "No discussions yet",
-  "start_conversation": "Be the first to start a conversation!"
+  "start_conversation": "Be the first to start a conversation!",
+  
+  "dashboard": {
+    "title": "National Admin Dashboard",
+    "logout": "Logout",
+    "overview": "National Overview",
+    "farms": "Farms",
+    "users": "Users",
+    "livestock": "Livestock",
+
+    "riskMap": "National Risk Map",
+    "riskMapPlaceholder": "Interactive map with high-risk farms/districts (placeholder)",
+    "outbreakFeed": "Outbreak Feed",
+    "acknowledge": "Acknowledge",
+    "acknowledged": "Acknowledged",
+    "trainingModules": "Training Modules",
+    "assigned": "Assigned",
+    "addModule": "Add New Module",
+    "systemConfig": "System Configuration",
+    "manageRoles": "Manage Roles & Permissions",
+    "configureWorkflows": "Configure Workflows",
+    "dataInsights": "Data Insights",
+    "exportReports": "Export Reports",
+    "exportCSV": "Export CSV",
+    "exportPDF": "Export PDF"
+  
+}
+
 
 
 }

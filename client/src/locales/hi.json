@@ -70,7 +70,36 @@
   "posts": "{{count}} पोस्ट",
   "posts_plural": "{{count}} पोस्टें",
   "no_discussions": "अभी तक कोई चर्चा नहीं है",
-  "start_conversation": "संवाद शुरू करने वाले पहले व्यक्ति बनें!"
+  "start_conversation": "संवाद शुरू करने वाले पहले व्यक्ति बनें!",
+
+  
+  "dashboard": {
+    "title": "राष्ट्रीय एडमिन डैशबोर्ड",
+    "logout": "लॉगआउट",
+    "overview": "राष्ट्रीय अवलोकन",
+    "farms": "खेत",
+    "users": "उपयोगकर्ता",
+    "livestock": "पशुधन",
+ 
+    "riskMap": "राष्ट्रीय जोखिम मानचित्र",
+    "riskMapPlaceholder": "उच्च-जोखिम वाले खेतों/जिलों का इंटरएक्टिव मानचित्र (प्लेसहोल्डर)",
+    "outbreakFeed": "रोग प्रकोप फ़ीड",
+  
+    "acknowledge": "स्वीकारें",
+    "acknowledged": "स्वीकार किया गया",
+    "trainingModules": "प्रशिक्षण मॉड्यूल",
+    "assigned": "नियुक्त",
+    "addModule": "नया मॉड्यूल जोड़ें",
+    "systemConfig": "सिस्टम कॉन्फ़िगरेशन",
+    "manageRoles": "भूमिकाएँ और अनुमतियाँ प्रबंधित करें",
+    "configureWorkflows": "वर्कफ़्लो कॉन्फ़िगर करें",
+    "dataInsights": "डेटा अंतर्दृष्टि",
+    "exportReports": "रिपोर्ट निर्यात करें",
+    "exportCSV": "CSV निर्यात करें",
+    "exportPDF": "PDF निर्यात करें"
+  }
+
+
 
 
 
