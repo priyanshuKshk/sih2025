@@ -6,10 +6,6 @@ import Chatbot from "./Chatbot"
 export default function Home() {
   const { t, i18n } = useTranslation()
 
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang)
-    localStorage.setItem("lang", lang)
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">

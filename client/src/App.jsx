@@ -3,13 +3,13 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import FarmerDashboard from "./pages/dashboards/FarmerDashboard"
+import FarmerDashboard from './pages/dashboards/FarmerDashboard'
 import VetDashboard from "./pages/dashboards/VetDashboard"
 import ExtensionDashboard from "./pages/dashboards/ExtensionDashboard"
 import DistrictDashboard from "./pages/dashboards/DistrictDashboard"
 import NationalDashboard from "./pages/dashboards/NationalDashboard"
-import Home from './Pages/Home'
-import DiscussionPage from './Pages/DiscussionPage'
+import Home from './pages/Home'
+import DiscussionPage from './pages/DiscussionPage'
 import FarmPage from './components/farm/FarmPage'
 import FarmList from './components/farm/FarmList'
 import { AuthProvider, useAuth } from './context/AuthContext'
