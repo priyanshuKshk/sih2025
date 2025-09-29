@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // ✅ i18n
 
 export default function FarmPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [farm, setFarm] = useState(null);
   const [logs, setLogs] = useState([]);
@@ -21,29 +23,29 @@ export default function FarmPage() {
     });
 
     setLogs([
-      { id: 1, description: "Monthly health log", status: "Pending" },
-      { id: 2, description: "Water quality report", status: "Approved" },
-      { id: 3, description: "Feed inspection", status: "Rejected" },
+      { id: 1, description: t("farmPage.logs.monthlyHealth"), status: "Pending" },
+      { id: 2, description: t("farmPage.logs.waterReport"), status: "Approved" },
+      { id: 3, description: t("farmPage.logs.feedInspection"), status: "Rejected" },
     ]);
 
     setAssessments([
-      { id: 1, title: "Foot & Mouth Risk", risk: "High" },
-      { id: 2, title: "Water contamination", risk: "Medium" },
-      { id: 3, title: "Crop disease check", risk: "Low" },
+      { id: 1, title: t("farmPage.assessments.footMouth"), risk: "High" },
+      { id: 2, title: t("farmPage.assessments.waterContamination"), risk: "Medium" },
+      { id: 3, title: t("farmPage.assessments.cropDisease"), risk: "Low" },
     ]);
 
     setTrainings([
-      { title: "Animal Vaccination Basics", progress: 80 },
-      { title: "Crop Disease Management", progress: 40 },
+      { title: t("farmPage.trainings.vaccination"), progress: 80 },
+      { title: t("farmPage.trainings.cropManagement"), progress: 40 },
     ]);
 
     setAlerts([
-      { id: 1, title: "Foot & Mouth outbreak nearby", message: "Vaccinate livestock immediately." },
-      { id: 2, title: "Water contamination alert", message: "Check water source before use." },
+      { id: 1, title: t("farmPage.alerts.footMouthTitle"), message: t("farmPage.alerts.footMouthMessage") },
+      { id: 2, title: t("farmPage.alerts.waterAlertTitle"), message: t("farmPage.alerts.waterAlertMessage") },
     ]);
-  }, []);
+  }, [t]);
 
-  if (!farm) return <div className="p-4 text-gray-500">Loading dummy farm data...</div>;
+  if (!farm) return <div className="p-4 text-gray-500">{t("farmPage.loading")}</div>;
 
   const Card = ({ children }) => (
     <section className="bg-white p-6 rounded-lg shadow">{children}</section>
@@ -57,25 +59,25 @@ export default function FarmPage() {
         onClick={() => navigate("/farmer-dashboard")}
         className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 mb-4"
       >
-        ← Back to Dashboard
+        ← {t("farmPage.back")}
       </button>
 
       {/* Farm Basic Info */}
       <Card>
         <h2 className="text-2xl font-semibold mb-3">{farm.name}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-          <div><strong>Type:</strong> {farm.type}</div>
-          <div><strong>Owner:</strong> {farm.owner?.name || "—"}</div>
-          <div><strong>Address:</strong> {farm.location?.address || "—"}</div>
-          <div><strong>Size:</strong> {farm.size?.count || "—"} {farm.size?.unit || "units"}</div>
-          <div><strong>Livestock:</strong> {farm.livestock.join(", ")}</div>
-          <div><strong>Crops:</strong> {farm.crops.join(", ")}</div>
+          <div><strong>{t("farmPage.info.type")}:</strong> {farm.type}</div>
+          <div><strong>{t("farmPage.info.owner")}:</strong> {farm.owner?.name || "—"}</div>
+          <div><strong>{t("farmPage.info.address")}:</strong> {farm.location?.address || "—"}</div>
+          <div><strong>{t("farmPage.info.size")}:</strong> {farm.size?.count || "—"} {farm.size?.unit || t("farmPage.units.default")}</div>
+          <div><strong>{t("farmPage.info.livestock")}:</strong> {farm.livestock.join(", ")}</div>
+          <div><strong>{t("farmPage.info.crops")}:</strong> {farm.crops.join(", ")}</div>
         </div>
       </Card>
 
       {/* Compliance Logs */}
       <Card>
-        <h3 className="text-xl font-semibold mb-3">Compliance Logs</h3>
+        <h3 className="text-xl font-semibold mb-3">{t("farmPage.logs.title")}</h3>
         <ul className="divide-y">
           {logs.map((log) => (
             <li key={log.id} className="py-2 flex justify-between">
@@ -94,7 +96,7 @@ export default function FarmPage() {
 
       {/* Risk Assessments */}
       <Card>
-        <h3 className="text-xl font-semibold mb-3">Risk Assessments</h3>
+        <h3 className="text-xl font-semibold mb-3">{t("farmPage.assessments.title")}</h3>
         <ul className="divide-y">
           {assessments.map((a) => (
             <li key={a.id} className="py-2 flex justify-between">
@@ -113,16 +115,16 @@ export default function FarmPage() {
 
       {/* Training Modules */}
       <Card>
-        <h3 className="text-xl font-semibold mb-3">Training Modules</h3>
+        <h3 className="text-xl font-semibold mb-3">{t("farmPage.trainings.title")}</h3>
         <ul className="space-y-2">
-          {trainings.map((t, idx) => (
+          {trainings.map((tModule, idx) => (
             <li key={idx} className="p-2 border rounded bg-gray-50">
               <div className="flex justify-between items-center">
-                <span>{t.title}</span>
-                <span className="text-sm text-gray-600">{t.progress}% completed</span>
+                <span>{tModule.title}</span>
+                <span className="text-sm text-gray-600">{tModule.progress}% {t("farmPage.trainings.completed")}</span>
               </div>
               <div className="h-2 bg-gray-200 rounded mt-1">
-                <div className="h-2 bg-green-500 rounded" style={{ width: `${t.progress}%` }} />
+                <div className="h-2 bg-green-500 rounded" style={{ width: `${tModule.progress}%` }} />
               </div>
             </li>
           ))}
@@ -131,7 +133,7 @@ export default function FarmPage() {
 
       {/* Alerts & Notifications */}
       <Card>
-        <h3 className="text-xl font-semibold mb-3">Alerts & Notifications</h3>
+        <h3 className="text-xl font-semibold mb-3">{t("farmPage.alerts.title")}</h3>
         <ul className="space-y-2">
           {alerts.map((alert) => (
             <li key={alert.id} className="p-3 rounded bg-yellow-50 border border-yellow-200">
@@ -144,17 +146,11 @@ export default function FarmPage() {
 
       {/* Action Center */}
       <Card>
-        <h3 className="text-xl font-semibold mb-3">Action Center</h3>
+        <h3 className="text-xl font-semibold mb-3">{t("farmPage.actions.title")}</h3>
         <div className="flex flex-col gap-2">
-          <button className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-            Submit New Log
-          </button>
-          <button className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-            Request Vet Advice
-          </button>
-          <button className="px-3 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
-            Schedule Farm Inspection
-          </button>
+          <button className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700">{t("farmPage.actions.submitLog")}</button>
+          <button className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">{t("farmPage.actions.requestVet")}</button>
+          <button className="px-3 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">{t("farmPage.actions.scheduleInspection")}</button>
         </div>
       </Card>
     </div>

@@ -1,9 +1,12 @@
+// src/pages/farm/FarmList.jsx
 import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom" // ✅ Added useNavigate
+import { Link, useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"   // ✅ i18n hook
 import api from "../../services/api"
 
 // ✨ Inline FarmForm with proper labels
 function FarmForm({ onCreated }) {
+  const { t } = useTranslation()  // ✅ Use translation
   const [formData, setFormData] = useState({
     name: "",
     type: "",
@@ -23,7 +26,7 @@ function FarmForm({ onCreated }) {
       onCreated()
       setFormData({ name: "", type: "", address: "" })
     } catch (err) {
-      alert("Failed to create farm. Please try again.")
+      alert(t("farmList.errors.createFailed"))
       console.error(err)
     } finally {
       setLoading(false)
@@ -34,7 +37,7 @@ function FarmForm({ onCreated }) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="farm-name" className="block text-sm font-medium text-gray-700 mb-1">
-          Farm Name *
+          {t("farmList.form.name")} *
         </label>
         <input
           id="farm-name"
@@ -44,13 +47,13 @@ function FarmForm({ onCreated }) {
           value={formData.name}
           onChange={handleChange}
           className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
-          placeholder="e.g., Green Valley Dairy"
+          placeholder={t("farmList.form.namePlaceholder")}
         />
       </div>
 
       <div>
         <label htmlFor="farm-type" className="block text-sm font-medium text-gray-700 mb-1">
-          Farm Type
+          {t("farmList.form.type")}
         </label>
         <select
           id="farm-type"
@@ -59,19 +62,19 @@ function FarmForm({ onCreated }) {
           onChange={handleChange}
           className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
         >
-          <option value="">Select type</option>
-          <option value="Dairy">Dairy</option>
-          <option value="Poultry">Poultry</option>
-          <option value="Crop">Crop</option>
-          <option value="Mixed">Mixed</option>
-          <option value="Aquaculture">Aquaculture</option>
-          <option value="Other">Other</option>
+          <option value="">{t("farmList.form.selectType")}</option>
+          <option value="Dairy">{t("farmList.types.dairy")}</option>
+          <option value="Poultry">{t("farmList.types.poultry")}</option>
+          <option value="Crop">{t("farmList.types.crop")}</option>
+          <option value="Mixed">{t("farmList.types.mixed")}</option>
+          <option value="Aquaculture">{t("farmList.types.aquaculture")}</option>
+          <option value="Other">{t("farmList.types.other")}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="farm-address" className="block text-sm font-medium text-gray-700 mb-1">
-          Address
+          {t("farmList.form.address")}
         </label>
         <textarea
           id="farm-address"
@@ -80,7 +83,7 @@ function FarmForm({ onCreated }) {
           onChange={handleChange}
           rows="2"
           className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
-          placeholder="Village, District, State, PIN"
+          placeholder={t("farmList.form.addressPlaceholder")}
         />
       </div>
 
@@ -88,12 +91,10 @@ function FarmForm({ onCreated }) {
         type="submit"
         disabled={loading}
         className={`w-full py-2.5 px-4 rounded-lg font-medium text-white transition ${
-          loading
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-green-600 hover:bg-green-700"
+          loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
         }`}
       >
-        {loading ? "Creating..." : "Add Farm"}
+        {loading ? t("farmList.form.creating") : t("farmList.form.add")}
       </button>
     </form>
   )
@@ -101,7 +102,8 @@ function FarmForm({ onCreated }) {
 
 // ✅ Main FarmList Component
 export default function FarmList() {
-  const navigate = useNavigate() // ✅ Initialize navigate
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const [farms, setFarms] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -111,7 +113,7 @@ export default function FarmList() {
       const res = await api.get("/farms")
       setFarms(res.data || [])
     } catch (err) {
-      console.error("Failed to fetch farms:", err)
+      console.error(t("farmList.errors.fetchFailed"), err)
     } finally {
       setLoading(false)
     }
@@ -121,32 +123,29 @@ export default function FarmList() {
     fetchFarms()
   }, [])
 
-  // ✅ Handle back to dashboard
-  const handleBackToDashboard = () => {
-    navigate("/farmer-dashboard")
-  }
-
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 md:p-8 relative"> {/* ✅ Added relative */}
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 md:p-8 relative">
       {/* Back to Dashboard Button */}
       <button
-        onClick={handleBackToDashboard}
+        onClick={() => navigate("/farmer-dashboard")}
         className="absolute top-4 left-4 flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
       >
-        ← Back to Dashboard
+        ← {t("farmList.back")}
       </button>
 
-      <div className="max-w-6xl mx-auto pt-2"> {/* ✅ Added pt-2 to avoid overlap */}
+      <div className="max-w-6xl mx-auto pt-2">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">My Farms</h1>
-          <p className="text-gray-600 mt-1">Manage your farms and livestock operations</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+            {t("farmList.title")}
+          </h1>
+          <p className="text-gray-600 mt-1">{t("farmList.subtitle")}</p>
         </div>
 
         {/* Add New Farm Section */}
         <section className="mb-10 bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6">
           <h2 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-            <span>➕</span> Add New Farm
+            <span>➕</span> {t("farmList.addSection")}
           </h2>
           <div className="border-t border-gray-100 pt-4">
             <FarmForm onCreated={fetchFarms} />
@@ -156,9 +155,11 @@ export default function FarmList() {
         {/* Farm List Section */}
         <section>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Your Farms</h2>
+            <h2 className="text-lg font-semibold text-gray-800">{t("farmList.listTitle")}</h2>
             {farms.length > 0 && (
-              <span className="text-sm text-gray-500">{farms.length} farm{farms.length !== 1 ? 's' : ''}</span>
+              <span className="text-sm text-gray-500">
+                {farms.length} {t("farmList.count", { count: farms.length })}
+              </span>
             )}
           </div>
 
@@ -175,8 +176,8 @@ export default function FarmList() {
           ) : farms.length === 0 ? (
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
               <div className="text-5xl mb-4">🌱</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">No farms yet</h3>
-              <p className="text-gray-600 mb-4">Get started by adding your first farm above.</p>
+              <h3 className="text-lg font-medium text-gray-800 mb-2">{t("farmList.noFarmsTitle")}</h3>
+              <p className="text-gray-600 mb-4">{t("farmList.noFarmsDesc")}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -187,11 +188,9 @@ export default function FarmList() {
                 >
                   <div className="p-5 flex-grow">
                     <h3 className="font-semibold text-gray-800 text-lg mb-1 truncate">{f.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">
-                      {f.type || "Farm"}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-2">{f.type || t("farmList.defaultType")}</p>
                     <p className="text-sm text-gray-500 line-clamp-2">
-                      {f.location?.address || "No address provided"}
+                      {f.location?.address || t("farmList.noAddress")}
                     </p>
                   </div>
                   <div className="px-5 pb-5 mt-auto">
@@ -199,7 +198,7 @@ export default function FarmList() {
                       to={`/farm/${f._id}`}
                       className="w-full block text-center py-2 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition"
                     >
-                      View Details
+                      {t("farmList.viewDetails")}
                     </Link>
                   </div>
                 </div>

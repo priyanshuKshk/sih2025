@@ -98,7 +98,213 @@
     "exportCSV": "Export CSV",
     "exportPDF": "Export PDF"
   
-}
+},
+
+
+  "districtDashboard": {
+    "title": "District Admin Dashboard",
+    "logout": "Logout",
+    "overview": "District Overview",
+    "complianceSummary": "Compliance Summary",
+    "pendingLogs": "Pending Compliance Logs",
+    "farmer": "Farmer",
+    "farm": "Farm",
+    "type": "Type",
+    "submittedAt": "Submitted At",
+    "status": "Status",
+    "actions": "Actions",
+    "approve": "Approve",
+    "reject": "Reject",
+    "riskMap": "Risk Map",
+    "riskMapPlaceholder": "Interactive map of high-risk farms (placeholder)",
+    "alerts": "Alerts & Notifications",
+    "acknowledge": "Acknowledge",
+    "acknowledged": "Acknowledged",
+    "userManagement": "User Management",
+    "addFarmer": "Add Farmer",
+    "addVet": "Add Vet",
+    "addExtWorker": "Add Extension Worker",
+    "reportsExports": "Reports & Exports",
+    "generateCSV": "Generate CSV Report",
+    "generatePDF": "Generate PDF Report"
+  },
+
+  
+  "vetDashboard": {
+    "title": "Veterinarian Dashboard",
+    "logout": "Logout",
+    "metrics": "Dashboard Metrics",
+    "totalFarms": "Total Linked Farms",
+    "highRisk": "High Risk Farms",
+    "mediumRisk": "Medium Risk Farms",
+    "lowRisk": "Low Risk Farms",
+    "pendingLogs": "Pending Compliance Logs",
+    "pendingActions": "Pending Corrective Actions",
+    "linkedFarms": "Linked Farms",
+    "farm": "Farm",
+    "type": "Type",
+    "risk": "Risk",
+    "logs": "Compliance Logs Pending Review",
+    "farmer": "Farmer",
+    "submittedAt": "Submitted At",
+    "actions": "Corrective Actions",
+    "completed": "Completed",
+    "markCompleted": "Mark Completed",
+    "alerts": "Alerts",
+    "guidelines": "Training / Guidelines",
+    "reports": "Reports"
+  },
+
+  "extensionDashboard": {
+    "title": "Extension Worker Dashboard",
+    "logout": "Logout",
+    "metrics": "Dashboard Metrics",
+    "totalFarms": "Total Farms",
+    "highRiskFarms": "High Risk Farms",
+    "mediumRiskFarms": "Medium Risk Farms",
+    "lowRiskFarms": "Low Risk Farms",
+    "upcomingTrainings": "Upcoming Trainings",
+    "scheduledVisits": "Scheduled Visits",
+    "regionalFarms": "Regional Farms",
+    "type": "Type",
+    "risk": "Risk",
+    "trainingSessions": "Training Sessions",
+    "date": "Date",
+    "enrolled": "Enrolled",
+    "completed": "Completed",
+    "farmVisits": "Farm Visits / Outreach Logs",
+    "notes": "Notes",
+    "alerts": "Alerts",
+    "acknowledge": "Acknowledge",
+    "reports": "Reports",
+    "viewCompliance": "View Regional Compliance Report",
+    "viewTraining": "View Training Effectiveness",
+    "actionCenter": "Action Center",
+    "scheduleTraining": "Schedule New Training",
+    "sendAlert": "Send Alert to Farmers",
+    "requestVet": "Request Vet Follow-up"
+  },
+
+  
+  "farmerDashboard": {
+    "title": "Farmer Dashboard",
+    "myFarms": "My Farms",
+    "logout": "Logout",
+    "metrics": "Farm Dashboard Metrics",
+    "overallCompliance": "Overall Compliance",
+    "highRisk": "High Risk Farms",
+    "mediumRisk": "Medium Risk Farms",
+    "lowRisk": "Low Risk Farms",
+    "forum": "Discussion Forum",
+    "forumDesc": "Share ideas and updates with other farmers.",
+    "goForum": "Go to Forum",
+    "overview": "Farm Overview",
+    "overviewDesc": "See overall details and statistics of your farm(s).",
+    "viewOverview": "View Overview",
+    "riskSummary": "Risk Assessment Summary",
+    "complianceLogs": "Compliance Logs",
+    "training": "Training Modules",
+    "completed": "completed",
+    "openTraining": "Open Training",
+    "alerts": "Alerts & Notifications",
+    "actionCenter": "Action Center",
+    "submitLog": "Submit New Log",
+    "requestVet": "Request Vet Advice",
+    "scheduleInspection": "Schedule Farm Inspection"
+  },
+
+
+  "farmList": {
+    "back": "Back to Dashboard",
+    "title": "My Farms",
+    "subtitle": "Manage your farms and livestock operations",
+    "addSection": "Add New Farm",
+    "listTitle": "Your Farms",
+    "count": "farm(s)",
+    "noFarmsTitle": "No farms yet",
+    "noFarmsDesc": "Get started by adding your first farm above.",
+    "viewDetails": "View Details",
+    "defaultType": "Farm",
+    "noAddress": "No address provided",
+    "errors": {
+      "createFailed": "Failed to create farm. Please try again.",
+      "fetchFailed": "Failed to fetch farms."
+    },
+    "form": {
+      "name": "Farm Name",
+      "namePlaceholder": "e.g., Green Valley Dairy",
+      "type": "Farm Type",
+      "selectType": "Select type",
+      "address": "Address",
+      "addressPlaceholder": "Village, District, State, PIN",
+      "add": "Add Farm",
+      "creating": "Creating..."
+    },
+    "types": {
+      "dairy": "Dairy",
+      "poultry": "Poultry",
+      "crop": "Crop",
+      "mixed": "Mixed",
+      "aquaculture": "Aquaculture",
+      "other": "Other"
+    }
+  },
+
+  
+  "farmPage": {
+    "back": "Back to Dashboard",
+    "loading": "Loading dummy farm data...",
+    "units": { "default": "units" },
+    "info": {
+      "type": "Type",
+      "owner": "Owner",
+      "address": "Address",
+      "size": "Size",
+      "livestock": "Livestock",
+      "crops": "Crops"
+    },
+    "logs": {
+      "title": "Compliance Logs",
+      "monthlyHealth": "Monthly health log",
+      "waterReport": "Water quality report",
+      "feedInspection": "Feed inspection"
+    },
+    "assessments": {
+      "title": "Risk Assessments",
+      "footMouth": "Foot & Mouth Risk",
+      "waterContamination": "Water contamination",
+      "cropDisease": "Crop disease check"
+    },
+    "trainings": {
+      "title": "Training Modules",
+      "vaccination": "Animal Vaccination Basics",
+      "cropManagement": "Crop Disease Management",
+      "completed": "completed"
+    },
+    "alerts": {
+      "title": "Alerts & Notifications",
+      "footMouthTitle": "Foot & Mouth outbreak nearby",
+      "footMouthMessage": "Vaccinate livestock immediately.",
+      "waterAlertTitle": "Water contamination alert",
+      "waterAlertMessage": "Check water source before use."
+    },
+    "actions": {
+      "title": "Action Center",
+      "submitLog": "Submit New Log",
+      "requestVet": "Request Vet Advice",
+      "scheduleInspection": "Schedule Farm Inspection"
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 

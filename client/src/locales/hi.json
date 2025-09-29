@@ -97,7 +97,212 @@
     "exportReports": "रिपोर्ट निर्यात करें",
     "exportCSV": "CSV निर्यात करें",
     "exportPDF": "PDF निर्यात करें"
+  },
+
+  
+  "districtDashboard": {
+    "title": "जिला एडमिन डैशबोर्ड",
+    "logout": "लॉगआउट",
+    "overview": "जिला अवलोकन",
+    "complianceSummary": "अनुपालन सारांश",
+    "pendingLogs": "लंबित अनुपालन लॉग",
+    "farmer": "किसान",
+    "farm": "खेत",
+    "type": "प्रकार",
+    "submittedAt": "जमा की तिथि",
+    "status": "स्थिति",
+    "actions": "कार्रवाई",
+    "approve": "स्वीकृत करें",
+    "reject": "अस्वीकृत करें",
+    "riskMap": "जोखिम मानचित्र",
+    "riskMapPlaceholder": "उच्च जोखिम वाले खेतों का इंटरएक्टिव मानचित्र (प्लेसहोल्डर)",
+    "alerts": "चेतावनी और सूचनाएँ",
+    "acknowledge": "स्वीकारें",
+    "acknowledged": "स्वीकार किया गया",
+    "userManagement": "उपयोगकर्ता प्रबंधन",
+    "addFarmer": "किसान जोड़ें",
+    "addVet": "पशु चिकित्सक जोड़ें",
+    "addExtWorker": "विस्तार कार्यकर्ता जोड़ें",
+    "reportsExports": "रिपोर्ट और निर्यात",
+    "generateCSV": "CSV रिपोर्ट जनरेट करें",
+    "generatePDF": "PDF रिपोर्ट जनरेट करें"
+  },
+
+  
+  "vetDashboard": {
+    "title": "पशु चिकित्सक डैशबोर्ड",
+    "logout": "लॉगआउट",
+    "metrics": "डैशबोर्ड मीट्रिक्स",
+    "totalFarms": "कुल लिंक्ड फार्म",
+    "highRisk": "उच्च जोखिम वाले फार्म",
+    "mediumRisk": "मध्यम जोखिम वाले फार्म",
+    "lowRisk": "कम जोखिम वाले फार्म",
+    "pendingLogs": "लंबित अनुपालन लॉग",
+    "pendingActions": "लंबित सुधारात्मक कार्य",
+    "linkedFarms": "लिंक्ड फार्म",
+    "farm": "फार्म",
+    "type": "प्रकार",
+    "risk": "जोखिम",
+    "logs": "समीक्षा हेतु लंबित अनुपालन लॉग",
+    "farmer": "किसान",
+    "submittedAt": "जमा करने की तिथि",
+    "actions": "सुधारात्मक कार्य",
+    "completed": "पूर्ण",
+    "markCompleted": "पूर्ण चिह्नित करें",
+    "alerts": "चेतावनी",
+    "guidelines": "प्रशिक्षण / दिशा-निर्देश",
+    "reports": "रिपोर्ट"
+  },
+
+  
+  "extensionDashboard": {
+    "title": "विस्तार कार्यकर्ता डैशबोर्ड",
+    "logout": "लॉगआउट",
+    "metrics": "डैशबोर्ड मीट्रिक्स",
+    "totalFarms": "कुल फार्म",
+    "highRiskFarms": "उच्च जोखिम वाले फार्म",
+    "mediumRiskFarms": "मध्यम जोखिम वाले फार्म",
+    "lowRiskFarms": "कम जोखिम वाले फार्म",
+    "upcomingTrainings": "आगामी प्रशिक्षण",
+    "scheduledVisits": "निर्धारित दौरे",
+    "regionalFarms": "क्षेत्रीय फार्म",
+    "type": "प्रकार",
+    "risk": "जोखिम",
+    "trainingSessions": "प्रशिक्षण सत्र",
+    "date": "तिथि",
+    "enrolled": "नामांकित",
+    "completed": "पूर्ण",
+    "farmVisits": "फार्म दौरे / आउटरीच लॉग",
+    "notes": "टिप्पणियाँ",
+    "alerts": "चेतावनी",
+    "acknowledge": "स्वीकार करें",
+    "reports": "रिपोर्ट",
+    "viewCompliance": "क्षेत्रीय अनुपालन रिपोर्ट देखें",
+    "viewTraining": "प्रशिक्षण प्रभावशीलता देखें",
+    "actionCenter": "एक्शन सेंटर",
+    "scheduleTraining": "नया प्रशिक्षण निर्धारित करें",
+    "sendAlert": "किसानों को अलर्ट भेजें",
+    "requestVet": "पशु चिकित्सक फॉलो-अप का अनुरोध करें"
+  },
+
+  
+  "farmerDashboard": {
+    "title": "किसान डैशबोर्ड",
+    "myFarms": "मेरे फार्म",
+    "logout": "लॉगआउट",
+    "metrics": "फार्म डैशबोर्ड मेट्रिक्स",
+    "overallCompliance": "कुल अनुपालन",
+    "highRisk": "उच्च जोखिम वाले फार्म",
+    "mediumRisk": "मध्यम जोखिम वाले फार्म",
+    "lowRisk": "कम जोखिम वाले फार्म",
+    "forum": "चर्चा मंच",
+    "forumDesc": "अन्य किसानों के साथ विचार और अपडेट साझा करें।",
+    "goForum": "फोरम पर जाएं",
+    "overview": "फार्म अवलोकन",
+    "overviewDesc": "अपने फार्म की संपूर्ण जानकारी और आँकड़े देखें।",
+    "viewOverview": "अवलोकन देखें",
+    "riskSummary": "जोखिम मूल्यांकन सारांश",
+    "complianceLogs": "अनुपालन लॉग",
+    "training": "प्रशिक्षण मॉड्यूल",
+    "completed": "पूरा हुआ",
+    "openTraining": "प्रशिक्षण खोलें",
+    "alerts": "अलर्ट और सूचनाएं",
+    "actionCenter": "एक्शन सेंटर",
+    "submitLog": "नया लॉग जमा करें",
+    "requestVet": "पशु चिकित्सक से सलाह लें",
+    "scheduleInspection": "फार्म निरीक्षण निर्धारित करें"
+  },
+
+
+  "farmList": {
+    "back": "डैशबोर्ड पर वापस जाएं",
+    "title": "मेरे फ़ार्म",
+    "subtitle": "अपने फ़ार्म और पशुपालन का प्रबंधन करें",
+    "addSection": "नया फ़ार्म जोड़ें",
+    "listTitle": "आपके फ़ार्म",
+    "count": "फ़ार्म",
+    "noFarmsTitle": "अभी तक कोई फ़ार्म नहीं",
+    "noFarmsDesc": "ऊपर अपना पहला फ़ार्म जोड़कर शुरू करें।",
+    "viewDetails": "विवरण देखें",
+    "defaultType": "फ़ार्म",
+    "noAddress": "पता उपलब्ध नहीं",
+    "errors": {
+      "createFailed": "फ़ार्म बनाने में विफल। कृपया पुनः प्रयास करें।",
+      "fetchFailed": "फ़ार्म लाने में विफल।"
+    },
+    "form": {
+      "name": "फ़ार्म का नाम",
+      "namePlaceholder": "जैसे, ग्रीन वैली डेयरी",
+      "type": "फ़ार्म का प्रकार",
+      "selectType": "प्रकार चुनें",
+      "address": "पता",
+      "addressPlaceholder": "गाँव, ज़िला, राज्य, पिन",
+      "add": "फ़ार्म जोड़ें",
+      "creating": "बना रहा है..."
+    },
+    "types": {
+      "dairy": "डेयरी",
+      "poultry": "पोल्ट्री",
+      "crop": "फसल",
+      "mixed": "मिश्रित",
+      "aquaculture": "मत्स्य पालन",
+      "other": "अन्य"
+    }
+  },
+
+  
+  "farmPage": {
+    "back": "डैशबोर्ड पर वापस",
+    "loading": "डमी फार्म डेटा लोड हो रहा है...",
+    "units": { "default": "यूनिट्स" },
+    "info": {
+      "type": "प्रकार",
+      "owner": "मालिक",
+      "address": "पता",
+      "size": "आकार",
+      "livestock": "पशुधन",
+      "crops": "फसलें"
+    },
+    "logs": {
+      "title": "अनुपालन लॉग",
+      "monthlyHealth": "मासिक स्वास्थ्य लॉग",
+      "waterReport": "जल गुणवत्ता रिपोर्ट",
+      "feedInspection": "चारे का निरीक्षण"
+    },
+    "assessments": {
+      "title": "जोखिम आकलन",
+      "footMouth": "फुट एंड माउथ रोग जोखिम",
+      "waterContamination": "जल संदूषण",
+      "cropDisease": "फसल रोग जाँच"
+    },
+    "trainings": {
+      "title": "प्रशिक्षण मॉड्यूल",
+      "vaccination": "पशु टीकाकरण मूल बातें",
+      "cropManagement": "फसल रोग प्रबंधन",
+      "completed": "पूरा हुआ"
+    },
+    "alerts": {
+      "title": "अलर्ट और सूचनाएँ",
+      "footMouthTitle": "नज़दीकी फुट एंड माउथ प्रकोप",
+      "footMouthMessage": "पशुधन को तुरंत टीका लगाएँ।",
+      "waterAlertTitle": "जल संदूषण चेतावनी",
+      "waterAlertMessage": "उपयोग से पहले जल स्रोत जांचें।"
+    },
+    "actions": {
+      "title": "एक्शन सेंटर",
+      "submitLog": "नया लॉग सबमिट करें",
+      "requestVet": "पशु चिकित्सक सलाह माँगें",
+      "scheduleInspection": "फार्म निरीक्षण निर्धारित करें"
+    }
   }
+
+
+
+
+
+
+
+
 
 
 
