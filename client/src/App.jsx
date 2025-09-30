@@ -30,7 +30,6 @@ export default function App() {
 
   return (
     <AuthProvider>
-      {/* 🔥 Global Language Switcher */}
       <div className="flex justify-end p-4 gap-2 bg-gray-100">
         <button
           onClick={() => changeLanguage("en")}
