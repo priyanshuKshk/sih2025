@@ -3,11 +3,11 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import FarmerDashboard from './pages/dash/FarmerDashboard'
-import VetDashboard from "./pages/dash/VetDashboard"
-import ExtensionDashboard from "./pages/dash/ExtensionDashboard"
-import DistrictDashboard from "./pages/dash/DistrictDashboard";
-import NationalDashboard from "./pages/dash/NationalDashboard";
+import FarmerDashboard from "./pages/dash/FarmerDashboard.jsx";
+import DistrictDashboard from "./pages/dash/DistrictDashboard.jsx";
+import ExtensionDashboard from "./pages/dash/ExtensionDashboard.jsx";
+import NationalDashboard from "./pages/dash/NationalDashboard.jsx";
+import VetDashboard from "./pages/dash/VetDashboard.jsx";
 import Home from './pages/Home';
 import DiscussionPage from './pages/DiscussionPage';
 import FarmPage from './components/farm/FarmPage';
