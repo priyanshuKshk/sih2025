@@ -8,6 +8,11 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import DiscussionPage from './Pages/DiscussionPage'
 import FarmPage from './components/farm/FarmPage'
 import FarmList from './components/farm/FarmList'
+import FarmerDashboard from './Pages/dash/FarmerDashboard'
+import VetDashboard from './Pages/dash/VetDashboard'
+import ExtensionDashboard from './Pages/dash/ExtensionDashboard'
+import DistrictDashboard from './Pages/dash/DistrictDashboard'
+import NationalDashboard from './Pages/dash/NationalDashboard'
 
 
 function PrivateRoute({ children }) {
@@ -46,12 +51,12 @@ export default function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/farmer-dashboard" element={<FarmerDashboard />} /> */}
+        {<Route path="/farmer-dashboard" element={<FarmerDashboard />} />}
         <Route path="/discussion" element={<DiscussionPage />} />
-        {/* <Route path="/vet-dashboard" element={<VetDashboard />} />
+        <Route path="/vet-dashboard" element={<VetDashboard />} />
         <Route path="/extension-dashboard" element={<ExtensionDashboard />} />
         <Route path="/district-dashboard" element={<DistrictDashboard />} />
-        <Route path="/national-dashboard" element={<NationalDashboard />} /> */}
+        <Route path="/national-dashboard" element={<NationalDashboard />} /> 
         <Route path="/farm" element={<FarmPage />} />
         <Route path="/farmlist" element={<FarmList />} />
       </Routes>
