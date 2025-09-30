@@ -3,16 +3,12 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-// import FarmerDashboard from "./pages/dash/FarmerDashboard.jsx";
-// import DistrictDashboard from "./pages/dash/DistrictDashboard.jsx";
-// import ExtensionDashboard from "./pages/dash/ExtensionDashboard.jsx";
-// import NationalDashboard from "./pages/dash/NationalDashboard.jsx";
-// import VetDashboard from "./pages/dash/VetDashboard.jsx";
-import Home from './pages/Home';
-import DiscussionPage from './pages/DiscussionPage';
-import FarmPage from './components/farm/FarmPage';
-import FarmList from './components/farm/FarmList';
+import Home from './Pages/Home'
 import { AuthProvider, useAuth } from './context/AuthContext'
+import DiscussionPage from './Pages/DiscussionPage'
+import FarmPage from './components/farm/FarmPage'
+import FarmList from './components/farm/FarmList'
+
 
 function PrivateRoute({ children }) {
   const { user } = useAuth()
@@ -47,7 +43,7 @@ export default function App() {
 
       {/* App Routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* <Route path="/farmer-dashboard" element={<FarmerDashboard />} /> */}
