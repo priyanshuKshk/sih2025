@@ -6,16 +6,13 @@ import { useTranslation } from "react-i18next";
 export default function ExtensionDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
   };
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
 
   // State
   const [farms, setFarms] = useState([]);

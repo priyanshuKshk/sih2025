@@ -6,16 +6,11 @@ import { useTranslation } from "react-i18next";
 export default function FarmerDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
-  };
-
-  // 🌐 Language switcher
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "hi" : "en");
   };
 
   // State
